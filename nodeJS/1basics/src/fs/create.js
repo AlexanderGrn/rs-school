@@ -8,16 +8,16 @@ const __dirname = dirname(__filename);
 export const create = async () => {
     // Write your code here 
     try {
-        fs.writeFile(
+        await fs.writeFile(
             path.join(__dirname, 'files', 'fresh.txt'),
             'I am fresh and young',
             { flag: 'wx' },
             (err) => {
-                if (err) throw new Error('some eror mes');
+                if (err) throw new err;
             }
         );
     } catch (err) {
-        console.error(err.message);
+        if (err.code === 'EEXIST') console.error(Error(`FS operation failed`));
     }
 };
 
