@@ -7,13 +7,18 @@ const __dirname = dirname(__filename);
 
 export const create = async () => {
     // Write your code here 
-    fs.writeFile(
-        path.join(__dirname, 'files', 'fresh.txt'),
-        'I am fresh and young',
-        (err) => {
-            if (err) throw err;
-        }
-    );
+    try {
+        fs.writeFile(
+            path.join(__dirname, 'files', 'fresh.txt'),
+            'I am fresh and young',
+            { flag: 'wx' },
+            (err) => {
+                if (err) throw new Error('some eror mes');
+            }
+        );
+    } catch (err) {
+        console.error(err.message);
+    }
 };
 
 create();
