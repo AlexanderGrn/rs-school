@@ -13,7 +13,7 @@ export const create = async () => {
             'I am fresh and young',
             { flag: 'wx' },
             (err) => {
-                if (err) throw new err;
+                if (err) throw new Error;
             }
         );
     } catch (err) {
